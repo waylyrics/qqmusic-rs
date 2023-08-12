@@ -26,7 +26,7 @@ pub struct Genre {
     pub title: String,
     #[serde(rename = "type")]
     pub type_field: String,
-    pub content: Vec<Content>,
+    pub content: Vec<GenreInfo>,
     pub pos: i64,
     pub more: i64,
     pub selected: String,
@@ -34,7 +34,7 @@ pub struct Genre {
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct Content {
+pub struct GenreInfo {
     pub id: i64,
     pub value: String,
     pub mid: String,
@@ -54,7 +54,7 @@ pub struct Lan {
     pub title: String,
     #[serde(rename = "type")]
     pub type_field: String,
-    pub content: Vec<Content2>,
+    pub content: Vec<LanInfo>,
     pub pos: i64,
     pub more: i64,
     pub selected: String,
@@ -62,7 +62,7 @@ pub struct Lan {
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct Content2 {
+pub struct LanInfo {
     pub id: i64,
     pub value: String,
     pub mid: String,
@@ -82,7 +82,7 @@ pub struct PubTime {
     pub title: String,
     #[serde(rename = "type")]
     pub type_field: String,
-    pub content: Vec<Content3>,
+    pub content: Vec<PubTimeInfo>,
     pub pos: i64,
     pub more: i64,
     pub selected: String,
@@ -90,7 +90,7 @@ pub struct PubTime {
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct Content3 {
+pub struct PubTimeInfo {
     pub id: i64,
     pub value: String,
     pub mid: String,

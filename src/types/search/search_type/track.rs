@@ -8,11 +8,10 @@ pub struct TrackSearchResp {
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct Data {
     pub list: Vec<List>,
-    #[serde(rename = "pageNo")]
     pub page_no: i64,
-    #[serde(rename = "pageSize")]
     pub page_size: i64,
     pub total: i64,
     pub key: String,
@@ -22,6 +21,7 @@ pub struct Data {
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct List {
     pub singer: Vec<Singer>,
     pub name: String,
@@ -32,7 +32,6 @@ pub struct List {
     pub albummid: String,
     pub albumname: String,
     pub interval: i64,
-    #[serde(rename = "strMediaMid")]
     pub str_media_mid: String,
     pub size128: i64,
     pub size320: i64,
@@ -41,17 +40,7 @@ pub struct List {
     pub pay: Pay,
 }
 
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct Singer {
-    pub id: i64,
-    pub mid: String,
-    pub name: String,
-    pub pmid: String,
-    pub title: String,
-    #[serde(rename = "type")]
-    pub type_field: i64,
-    pub uin: i64,
-}
+use crate::types::song::Singer;
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Pay {
