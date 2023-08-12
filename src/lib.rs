@@ -1,5 +1,3 @@
-#![feature(async_fn_in_trait)]
-
 pub use serde;
 pub use serde_json;
 
