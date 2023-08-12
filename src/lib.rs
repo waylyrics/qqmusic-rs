@@ -1,19 +1,28 @@
 #![feature(async_fn_in_trait)]
 
-pub use reqwest;
-
-pub mod lyric;
-pub mod song;
+pub use serde;
+pub use serde_json;
 
 pub mod types;
 
+pub use types::SongId;
+
 #[derive(Clone, PartialEq, Eq, Hash)]
 pub struct QQMusicApi {
-    base_url: reqwest::Url,
+    base_url: url::Url,
 }
 
 impl QQMusicApi {
-    pub fn new(base_url: reqwest::Url) -> Self {
+    pub fn new(base_url: url::Url) -> Self {
         Self { base_url }
     }
 }
+
+/// 获取歌词
+pub mod lyric;
+/// 歌曲信息
+pub mod song;
+/// Cookies
+pub mod user;
+/// 搜索
+pub mod search;
