@@ -31,7 +31,7 @@ jobs:
             
             - name: Deploy Documentation
               env:
-                ACTIONS_DEPLOY_KEY: ${{ secrets.GITHUB_TOKEN }}
+                ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
                 PUBLISH_BRANCH: gh-pages
                 PUBLISH_DIR: ./target/doc
                 SCRIPT_MODE: true
