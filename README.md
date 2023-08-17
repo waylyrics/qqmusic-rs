@@ -1,8 +1,12 @@
 # qqmusic-rs
 
-QQMusic async client lib in rust
+QQMusic general client lib in rust
 
-Async apis in this lib require tokio(suggested), or async_compact
+## Usage
+
+Api functions returns Url if you need to `GET` that, or (Url, String) for `POST` endpoints.
+
+All POST endpoints need Content-Type: application/json until noted
 
 ## Credit
 
