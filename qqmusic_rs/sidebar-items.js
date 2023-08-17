@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["lyric","search","song","types","user"],"struct":["QQMusicApi"]};

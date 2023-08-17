@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["SongId"],"mod":["lyric","search","song","user"]};
