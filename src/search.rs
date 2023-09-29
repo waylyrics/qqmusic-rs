@@ -2,8 +2,6 @@ use url::Url;
 
 use crate::QQMusicApi;
 
-use search_type::SearchType;
-
 pub trait Search {
     fn search<T: SearchType>(
         &self,
@@ -50,14 +48,13 @@ macro_rules! search_type {
     };
 }
 
-mod search_type {
-    pub trait SearchType {
+pub trait SearchType {
         const TYPE_ID: u32;
         type Resp;
     }
 
-    search_type!(Track, 0, TrackSearchResp);
-}
+search_type!(Track, 0, TrackSearchResp);
+
 // search_type!(TrackList, 2, TrackListSearchResp);
 // search_type!(Track, 7, LyricSearchResp);
 // search_type!(Track, 8, AlbumSearchResp);

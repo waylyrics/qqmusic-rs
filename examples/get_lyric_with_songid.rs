@@ -20,7 +20,7 @@ async fn main() -> anyhow::Result<()> {
             .await?,
     )?;
     let mid = &detail.data.track_info.mid;
-    let url = api.query_lyric(SongId::Songmid(&mid));
+    let url = api.query_lyric(&mid);
     let resp: QueryLyricResp = serde_json::from_str(&client.get(url).send().await?.text().await?)?;
     println!("{resp:#?}");
     Ok(())
