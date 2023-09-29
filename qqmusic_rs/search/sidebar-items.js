@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"trait":["Search"]};
+window.SIDEBAR_ITEMS = {"struct":["Track"],"trait":["Search","SearchType"]};

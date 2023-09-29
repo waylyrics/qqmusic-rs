@@ -60,14 +60,9 @@
 <a href="#60" id="60">60</a>
 <a href="#61" id="61">61</a>
 <a href="#62" id="62">62</a>
-<a href="#63" id="63">63</a>
-<a href="#64" id="64">64</a>
-<a href="#65" id="65">65</a>
 </pre></div><pre class="rust"><code><span class="kw">use </span>url::Url;
 
 <span class="kw">use </span><span class="kw">crate</span>::QQMusicApi;
-
-<span class="kw">use </span>search_type::SearchType;
 
 <span class="kw">pub trait </span>Search {
     <span class="kw">fn </span>search&lt;T: SearchType&gt;(
@@ -115,14 +110,13 @@
     };
 }
 
-<span class="kw">mod </span>search_type {
-    <span class="kw">pub trait </span>SearchType {
+<span class="kw">pub trait </span>SearchType {
         <span class="kw">const </span>TYPE_ID: u32;
         <span class="kw">type </span>Resp;
     }
 
-    <span class="macro">search_type!</span>(Track, <span class="number">0</span>, TrackSearchResp);
-}
+<span class="macro">search_type!</span>(Track, <span class="number">0</span>, TrackSearchResp);
+
 <span class="comment">// search_type!(TrackList, 2, TrackListSearchResp);
 // search_type!(Track, 7, LyricSearchResp);
 // search_type!(Track, 8, AlbumSearchResp);
