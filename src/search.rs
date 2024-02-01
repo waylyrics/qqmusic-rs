@@ -1,3 +1,5 @@
+use std::fmt::Write;
+
 use url::Url;
 
 use crate::QQMusicApi;
@@ -25,12 +27,12 @@ impl Search for QQMusicApi {
         let mut query = format!("key={key}&t={}", T::TYPE_ID);
 
         if let Some(page_num) = page_num {
-            query += "&pageNo=";
-            query += &page_num.to_string();
+            query.write_fmt(format_args!("&pageNo={page_num}")).unwrap();
         }
         if let Some(page_size) = page_size {
-            query += "&pageSize=";
-            query += &page_size.to_string();
+            query
+                .write_fmt(format_args!("&pageSize={page_size}"))
+                .unwrap();
         }
 
         url.set_query(Some(&query));
@@ -49,9 +51,9 @@ macro_rules! search_type {
 }
 
 pub trait SearchType {
-        const TYPE_ID: u32;
-        type Resp;
-    }
+    const TYPE_ID: u32;
+    type Resp;
+}
 
 search_type!(Track, 0, TrackSearchResp);
 
