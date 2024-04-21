@@ -10,4 +10,4 @@ All POST endpoints need Content-Type: application/json until noted
 
 ## Credit
 
-[QQMusicApi](https://github.com/Sinofine/QQMusicApi.git)
+[QQMusicApi](https://github.com/waylyrics/QQMusicApi.git)
