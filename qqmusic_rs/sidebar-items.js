@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["lyric","search","song","types","user"],"struct":["QQMusicApi"]};
+window.SIDEBAR_ITEMS = {"mod":["lyric","search","song","types","user"],"struct":["QQMusicApi"],"type":["GETResult","POSTResult"]};

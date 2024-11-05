@@ -18,40 +18,24 @@
 <a href="#18" id="18">18</a>
 <a href="#19" id="19">19</a>
 <a href="#20" id="20">20</a>
-<a href="#21" id="21">21</a>
-<a href="#22" id="22">22</a>
-<a href="#23" id="23">23</a>
-<a href="#24" id="24">24</a>
-<a href="#25" id="25">25</a>
-<a href="#26" id="26">26</a>
-<a href="#27" id="27">27</a>
-<a href="#28" id="28">28</a>
-</pre></div><pre class="rust"><code><span class="kw">pub use </span>serde;
+</pre></div><pre class="rust"><code><span class="kw">pub use </span>http;
+<span class="kw">pub use </span>serde;
 <span class="kw">pub use </span>serde_json;
+<span class="kw">pub use </span>url;
 
 <span class="kw">pub mod </span>types;
 
+<span class="kw">pub mod </span>lyric;
+<span class="kw">pub mod </span>search;
+<span class="kw">pub mod </span>song;
+<span class="kw">pub mod </span>user;
+
 <span class="kw">pub use </span>types::SongId;
 
-<span class="attr">#[derive(Debug, Clone, PartialEq, Eq, Hash)]
-</span><span class="kw">pub struct </span>QQMusicApi {
-    base_url: url::Url,
-}
+<span class="kw">mod </span>config;
 
-<span class="kw">impl </span>QQMusicApi {
-    <span class="kw">pub fn </span>new(base_url: url::Url) -&gt; <span class="self">Self </span>{
-        <span class="self">Self </span>{ base_url }
-    }
-}
+<span class="kw">pub use </span>config::QQMusicApi;
 
-<span class="doccomment">/// 获取歌词
-</span><span class="kw">pub mod </span>lyric;
-<span class="doccomment">/// 搜索
-</span><span class="kw">pub mod </span>search;
-<span class="doccomment">/// 歌曲信息
-</span><span class="kw">pub mod </span>song;
-<span class="doccomment">/// Cookies
-</span><span class="kw">pub mod </span>user;
-
-<span class="kw">pub use </span>url;
+<span class="kw">pub type </span>GETResult = http::Result&lt;http::Request&lt;()&gt;&gt;;
+<span class="kw">pub type </span>POSTResult = http::Result&lt;http::Request&lt;String&gt;&gt;;
 </code></pre></div></section></main></body></html>

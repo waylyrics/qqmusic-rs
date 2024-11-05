@@ -62,11 +62,11 @@
 <a href="#62" id="62">62</a>
 <a href="#63" id="63">63</a>
 <a href="#64" id="64">64</a>
+<a href="#65" id="65">65</a>
+<a href="#66" id="66">66</a>
 </pre></div><pre class="rust"><code><span class="kw">use </span>std::fmt::Write;
 
-<span class="kw">use </span>url::Url;
-
-<span class="kw">use </span><span class="kw">crate</span>::QQMusicApi;
+<span class="kw">use crate</span>::{GETResult, QQMusicApi};
 
 <span class="kw">pub trait </span>Search {
     <span class="kw">fn </span>search&lt;T: SearchType&gt;(
@@ -74,7 +74,7 @@
         key: <span class="kw-2">&amp;</span>str,
         page_num: <span class="prelude-ty">Option</span>&lt;u32&gt;,
         page_size: <span class="prelude-ty">Option</span>&lt;u32&gt;,
-    ) -&gt; Url;
+    ) -&gt; GETResult;
 }
 
 <span class="kw">impl </span>Search <span class="kw">for </span>QQMusicApi {
@@ -83,7 +83,7 @@
         key: <span class="kw-2">&amp;</span>str,
         page_num: <span class="prelude-ty">Option</span>&lt;u32&gt;,
         page_size: <span class="prelude-ty">Option</span>&lt;u32&gt;,
-    ) -&gt; Url {
+    ) -&gt; GETResult {
         <span class="kw">let </span><span class="kw-2">mut </span>url = <span class="self">self</span>.base_url.clone();
 
         url.set_path(<span class="string">"/search"</span>);
@@ -100,7 +100,11 @@
         }
 
         url.set_query(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span>query));
-        url
+
+        http::Request::builder()
+            .method(<span class="string">"GET"</span>)
+            .uri(url.as_str())
+            .body(())
     }
 }
 

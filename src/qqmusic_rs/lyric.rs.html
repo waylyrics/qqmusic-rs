@@ -16,20 +16,24 @@
 <a href="#16" id="16">16</a>
 <a href="#17" id="17">17</a>
 <a href="#18" id="18">18</a>
-</pre></div><pre class="rust"><code><span class="kw">use </span>url::Url;
-
-<span class="kw">use crate</span>::{SongId, QQMusicApi};
+<a href="#19" id="19">19</a>
+<a href="#20" id="20">20</a>
+</pre></div><pre class="rust"><code><span class="kw">use crate</span>::{GETResult, QQMusicApi, SongId};
 
 <span class="kw">pub trait </span>QueryLyric {
-    <span class="kw">fn </span>query_lyric(<span class="kw-2">&amp;</span><span class="self">self</span>, song: <span class="kw-2">&amp;</span>str) -&gt; Url;
+    <span class="kw">fn </span>query_lyric(<span class="kw-2">&amp;</span><span class="self">self</span>, song: <span class="kw-2">&amp;</span>str) -&gt; GETResult;
 }
 
 <span class="kw">impl </span>QueryLyric <span class="kw">for </span>QQMusicApi {
-    <span class="kw">fn </span>query_lyric(<span class="kw-2">&amp;</span><span class="self">self</span>,  mid: <span class="kw-2">&amp;</span>str) -&gt; Url {
+    <span class="kw">fn </span>query_lyric(<span class="kw-2">&amp;</span><span class="self">self</span>, mid: <span class="kw-2">&amp;</span>str) -&gt; GETResult {
         <span class="kw">let </span><span class="kw-2">mut </span>url = <span class="self">self</span>.base_url.clone();
         url.set_path(<span class="string">"/lyric"</span>);
         url.set_query(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span>SongId::Songmid(mid).to_string()));
-        url
+
+        http::Request::builder()
+            .uri(url.as_str())
+            .method(<span class="string">"GET"</span>)
+            .body(())
     }
 }
 
