@@ -1,17 +1,19 @@
-use url::Url;
-
-use crate::{SongId, QQMusicApi};
+use crate::{GETResult, QQMusicApi, SongId};
 
 pub trait QueryLyric {
-    fn query_lyric(&self, song: &str) -> Url;
+    fn query_lyric(&self, song: &str) -> GETResult;
 }
 
 impl QueryLyric for QQMusicApi {
-    fn query_lyric(&self,  mid: &str) -> Url {
+    fn query_lyric(&self, mid: &str) -> GETResult {
         let mut url = self.base_url.clone();
         url.set_path("/lyric");
         url.set_query(Some(&SongId::Songmid(mid).to_string()));
-        url
+
+        http::Request::builder()
+            .uri(url.as_str())
+            .method("GET")
+            .body(())
     }
 }
 

@@ -1,8 +1,6 @@
 use std::fmt::Write;
 
-use url::Url;
-
-use crate::QQMusicApi;
+use crate::{GETResult, QQMusicApi};
 
 pub trait Search {
     fn search<T: SearchType>(
@@ -10,7 +8,7 @@ pub trait Search {
         key: &str,
         page_num: Option<u32>,
         page_size: Option<u32>,
-    ) -> Url;
+    ) -> GETResult;
 }
 
 impl Search for QQMusicApi {
@@ -19,7 +17,7 @@ impl Search for QQMusicApi {
         key: &str,
         page_num: Option<u32>,
         page_size: Option<u32>,
-    ) -> Url {
+    ) -> GETResult {
         let mut url = self.base_url.clone();
 
         url.set_path("/search");
@@ -36,7 +34,11 @@ impl Search for QQMusicApi {
         }
 
         url.set_query(Some(&query));
-        url
+
+        http::Request::builder()
+            .method("GET")
+            .uri(url.as_str())
+            .body(())
     }
 }
 
