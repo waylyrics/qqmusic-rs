@@ -18,9 +18,11 @@ impl QQMusicApi {
 
 /// 获取歌词
 pub mod lyric;
+/// 搜索
+pub mod search;
 /// 歌曲信息
 pub mod song;
 /// Cookies
 pub mod user;
-/// 搜索
-pub mod search;
+
+pub use url;
