@@ -46,7 +46,7 @@ impl ViewCookie for QQMusicApi {
 impl SetCookie for QQMusicApi {
     fn set_cookie(&self, cookie: &str) -> POSTResult {
         let mut url = self.base_url.clone();
-        url.set_path("/setCookie");
+        url.set_path("/user/setCookie");
         let payload = json!({"data": cookie});
 
         http::Request::builder()
