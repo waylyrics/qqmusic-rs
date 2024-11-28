@@ -104,7 +104,7 @@
 <span class="kw">impl </span>SetCookie <span class="kw">for </span>QQMusicApi {
     <span class="kw">fn </span>set_cookie(<span class="kw-2">&amp;</span><span class="self">self</span>, cookie: <span class="kw-2">&amp;</span>str) -&gt; POSTResult {
         <span class="kw">let </span><span class="kw-2">mut </span>url = <span class="self">self</span>.base_url.clone();
-        url.set_path(<span class="string">"/setCookie"</span>);
+        url.set_path(<span class="string">"/user/setCookie"</span>);
         <span class="kw">let </span>payload = <span class="macro">json!</span>({<span class="string">"data"</span>: cookie});
 
         http::Request::builder()
